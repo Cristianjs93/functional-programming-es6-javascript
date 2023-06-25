@@ -101,50 +101,42 @@ const cars = [
   { brand: "Ferrari", price: 9541, model: 1970 },
 ];
 
-// 1. Create a function ferraris that returns all the cars of the Ferrari brand.
+// // 1. Create a function ferraris that returns all the cars of the Ferrari brand.
 function ferraris(arr) {
-  let arrResult = [];
-  arr.filter((elemento) =>
-    elemento.brand === "Ferrari" ? arrResult.push(elemento) : 0
-  );
-  return arrResult;
+  const ferrarisArray = arr.filter((elemento) => elemento.brand === "Ferrari");
+  return ferrarisArray;
 }
 
 console.log(ferraris(cars));
 
-// 2. Create a function nineties that returns all the cars with models between 1980 and 1990.
+// // 2. Create a function nineties that returns all the cars with models between 1980 and 1990.
 function nineties(arr) {
-  let arrResult = [];
-  arr.filter((elemento) =>
-    1980 <= elemento.model && elemento.model <= 1990
-      ? arrResult.push(elemento)
-      : 0
+  const ninetiesArray = arr.filter(
+    (elemento) => elemento.model >= 1980 && elemento.model <= 1990
   );
-  return arrResult;
+  return ninetiesArray;
 }
 
 console.log(nineties(cars));
 
 // 3. Create a function list that returns an array of strings with the same number of cars.
-
 function list(arr) {
-  let arrResult = [];
-  arr.map((elemento) =>
-    arrResult.push([
-      `This ${elemento.brand} from ${elemento.model} costs $${elemento.price}`,
-    ])
+  const listArray = arr.map(
+    (elemento) =>
+      `This ${elemento.brand} from ${elemento.model} costs $${elemento.price}`
   );
-  return arrResult;
+  return listArray;
 }
 console.log(list(cars));
 
-// 4. Create a function bmwSum that returns the sum of all prices of the BMW cars
+// // 4. Create a function bmwSum that returns the sum of all prices of the BMW cars
 function bmwSum(arr) {
-  let acum = 0;
-  arr.filter((elemento) =>
-    elemento.brand === "BMW" ? (acum += elemento.price) : 0
-  );
-  return acum;
+  const bmwPriceSum = arr
+    .filter((elemento) => elemento.brand === "BMW")
+    .map((elemento) => elemento.price)
+    .reduce((acum, current) => acum + current);
+
+  return bmwPriceSum;
 }
 
 console.log(bmwSum(cars)); // 114455
